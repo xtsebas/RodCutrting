@@ -38,7 +38,7 @@ def test_rod_cutting_fixed():
         ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10, 10)  # Caso donde conviene no cortar
     ]
     
-    print("\nPruebas con el algoritmo corregido:")
+    print("\nPruebas con el algoritmo:")
     for i, (prices, n, expected) in enumerate(test_cases):
         result, cuts = rod_cutting_fixed(prices, n)
         print(f"Test {i+1}: Expected {expected}, Got {result}, Cuts: {cuts}")
