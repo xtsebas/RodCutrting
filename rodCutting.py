@@ -35,13 +35,21 @@ def test_rod_cutting_fixed():
         ([0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30], 8, 22),  # Varilla larga
         ([0, 3, 5, 8, 9, 10, 17, 17, 20, 24, 30], 5, 15),  # Diferente tabla de precios
         ([0, 2, 5, 7, 8, 10, 15, 17, 20, 24, 30], 7, 17),  # Variación en valores
-        ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10, 10)  # Caso donde conviene no cortar
+        ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10, 10)       # Caso donde conviene no cortar
     ]
     
-    print("\nPruebas con el algoritmo:")
+    print("\nResultados de las pruebas del algoritmo Rod Cutting:")
     for i, (prices, n, expected) in enumerate(test_cases):
         result, cuts = rod_cutting_fixed(prices, n)
-        print(f"Test {i+1}: Expected {expected}, Got {result}, Cuts: {cuts}")
-        assert result == expected, f"❌ Failed on test case {i+1}"
+        individual_prices = [prices[cut] for cut in cuts]
+        print(f"\n🔹 Test {i+1}:")
+        print(f"   - Precios disponibles: {prices}")
+        print(f"   - Longitud de la varilla: {n}")
+        print(f"   - Ganancia máxima esperada: {expected}")
+        print(f"   - Ganancia máxima obtenida: {result}")
+        print(f"   - Cortes realizados: {cuts}")
+        print(f"   - Precios por cada corte: {individual_prices}")
+        print(f"   - Suma total verificada: {sum(individual_prices)}")
+        assert result == expected, f"❌ Error en el caso de prueba {i+1}"
 
 test_rod_cutting_fixed()
